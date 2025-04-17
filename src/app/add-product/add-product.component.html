@@ -1,0 +1,97 @@
+<ion-card color="secondary">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+
+    <ion-item>
+      <label for="type">Product Type:</label>
+      <select formControlName="type" (change)="onTypeChange($event)">
+        <option value="">Select type</option>
+        <option value="popcorn">popcorn</option>
+        <option value="glasses">glasses</option>
+        <option value="drink">drink</option>
+        <option value="ticket">ticket</option>
+      </select>
+    </ion-item> 
+
+    <ion-item>
+      <label for="id">ID:</label>
+      <input type="number" formControlName="id">
+    </ion-item>
+
+    <ion-item>
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name">
+    </ion-item>
+
+    <ion-item>
+      <label for="price">Price:</label>
+      <input type="number" formControlName="price">
+    </ion-item>
+
+
+    <div *ngIf="productForm.get('type')?.value === 'popcorn'">
+      <ion-item>
+        <label for="size">Size:</label>
+        <select formControlName="size">
+          <option value="">Select size</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </ion-item>
+    </div>
+
+
+    <div *ngIf="productForm.get('type')?.value === 'glasses'">
+      <ion-item>
+        <label for="color">Color:</label>
+        <input type="text" formControlName="color">
+      </ion-item>
+
+      <ion-item>
+        <label for="size">Size:</label>
+        <select formControlName="size">
+          <option value="">Select size</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </ion-item>
+    </div>
+
+
+    <div *ngIf="productForm.get('type')?.value === 'drink'">
+      <ion-item>
+        <label for="volume">Volume (ml):</label>
+        <input type="number" formControlName="volume">
+      </ion-item>
+    </div>
+
+    <!-- Квиток -->
+    <div *ngIf="productForm.get('type')?.value === 'ticket'">
+      <ion-item>
+        <label for="row">Row:</label>
+        <input type="number" formControlName="row">
+      </ion-item>
+
+      <ion-item>
+        <label for="place">Place:</label>
+        <input type="number" formControlName="place">
+      </ion-item>
+
+      <ion-item>
+        <label for="hall">Hall:</label>
+        <input type="number" formControlName="hall">
+      </ion-item>
+
+      <ion-item>
+        <label for="date">Date:</label>
+        <input type="date" formControlName="date">
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-button type="submit" [disabled]="productForm.invalid">Add Product</ion-button>
+    </ion-item>
+  </form>
+</ion-card>  

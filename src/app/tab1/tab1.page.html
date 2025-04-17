@@ -1,0 +1,15 @@
+<app-my-header name="Лабораторна робота №6"></app-my-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let product of dataService.products">
+      <ion-label>
+        <h2>{{ product.getName() }}</h2>
+        <p *ngFor="let detail of product.getDetails()">{{ detail }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="addFormShow()">Додати товари</ion-button>
+  <app-add-product *ngIf="showAddForm" (productAdd)="addProduct($event)"></app-add-product>
+</ion-content>
