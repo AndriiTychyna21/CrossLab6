@@ -32,6 +32,6 @@ export class Glasses extends Product {
     }
 
     override getType(): string {
-        return "Glasses";
+        return "glasses";
     }
 }

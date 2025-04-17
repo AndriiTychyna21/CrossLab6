@@ -7,7 +7,7 @@ import { Glasses } from "./Glasses";
 export class ProductFabric {
     static getProduct(data: any): iProduct{
         switch(data.type) {
-            case "ticket":
+            case "ticket" :
                 return new Ticket(data.id, data.name, data.price, data.row, data.place, data.hall, data.date);
             case "drink":
                 return new Drink(data.id, data.name, data.price, data.volume);

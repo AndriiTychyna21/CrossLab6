@@ -3,90 +3,90 @@
 
 
     <ion-item>
-      <label for="type">Product Type:</label>
-      <select formControlName="type" (change)="onTypeChange($event)">
-        <option value="">Select type</option>
-        <option value="popcorn">popcorn</option>
-        <option value="glasses">glasses</option>
-        <option value="drink">drink</option>
-        <option value="ticket">ticket</option>
-      </select>
+      <ion-label for="type">Product Type:</ion-label>
+      <ion-select formControlName="type" (change)="onTypeChange($event)">
+        <ion-select-option value="">Select type</ion-select-option>
+        <ion-select-option value="popcorn">popcorn</ion-select-option>
+        <ion-select-option value="glasses">glasses</ion-select-option>
+        <ion-select-option value="drink">drink</ion-select-option>
+        <ion-select-option value="ticket">ticket</ion-select-option>
+      </ion-select>
     </ion-item> 
 
     <ion-item>
-      <label for="id">ID:</label>
-      <input type="number" formControlName="id">
+      <ion-label for="id">ID:</ion-label>
+      <ion-input type="number" formControlName="id"></ion-input>
     </ion-item>
 
     <ion-item>
-      <label for="name">Name:</label>
-      <input type="text" formControlName="name">
+      <ion-label for="name">Name:</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <label for="price">Price:</label>
-      <input type="number" formControlName="price">
+      <ion-label for="price">Price:</ion-label>
+      <ion-input type="number" formControlName="price"></ion-input>
     </ion-item>
 
 
     <div *ngIf="productForm.get('type')?.value === 'popcorn'">
       <ion-item>
-        <label for="size">Size:</label>
-        <select formControlName="size">
-          <option value="">Select size</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ion-label for="size">Size:</ion-label>
+        <ion-select formControlName="size">
+          <ion-select-option value="">Select size</ion-select-option>
+          <ion-select-option value="small">Small</ion-select-option>
+          <ion-select-option value="medium">Medium</ion-select-option>
+          <ion-select-option value="large">Large</ion-select-option>
+        </ion-select>
       </ion-item>
     </div>
 
 
     <div *ngIf="productForm.get('type')?.value === 'glasses'">
       <ion-item>
-        <label for="color">Color:</label>
-        <input type="text" formControlName="color">
+        <ion-label for="color">Color:</ion-label>
+        <ion-input type="text" formControlName="color"></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="size">Size:</label>
-        <select formControlName="size">
-          <option value="">Select size</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ion-label for="size">Size:</ion-label>
+        <ion-select formControlName="size">
+          <ion-select-option value="">Select size</ion-select-option>
+          <ion-select-option value="small">Small</ion-select-option>
+          <ion-select-option value="medium">Medium</ion-select-option>
+          <ion-select-option value="large">Large</ion-select-option>
+        </ion-select>
       </ion-item>
     </div>
 
 
     <div *ngIf="productForm.get('type')?.value === 'drink'">
       <ion-item>
-        <label for="volume">Volume (ml):</label>
-        <input type="number" formControlName="volume">
+        <ion-label for="volume">Volume (ml):</ion-label>
+        <ion-input type="number" formControlName="volume"></ion-input>
       </ion-item>
     </div>
 
     <!-- Квиток -->
     <div *ngIf="productForm.get('type')?.value === 'ticket'">
       <ion-item>
-        <label for="row">Row:</label>
-        <input type="number" formControlName="row">
+        <ion-label for="row">Row:</ion-label>
+        <ion-input type="number" formControlName="row"></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="place">Place:</label>
-        <input type="number" formControlName="place">
+        <ion-label for="place">Place:</ion-label>
+        <ion-input type="number" formControlName="place"></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="hall">Hall:</label>
-        <input type="number" formControlName="hall">
+        <ion-label for="hall">Hall:</ion-label>
+        <ion-input type="number" formControlName="hall"></ion-input>
       </ion-item>
 
       <ion-item>
-        <label for="date">Date:</label>
-        <input type="date" formControlName="date">
+        <ion-label for="date">Date:</ion-label>
+        <ion-input type="date" formControlName="date"></ion-input>
       </ion-item>
     </div>
 

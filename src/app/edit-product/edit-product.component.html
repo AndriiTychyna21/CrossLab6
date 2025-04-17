@@ -1,0 +1,88 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <ion-card-header>
+    <ion-card-title>Edit Product:</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <fieldset>
+      <ion-item>
+        <ion-input label="Name" labelPlacement="floating"
+          errorText="Invalid name"
+          [value]="product.getName()" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Price" type="number" labelPlacement="floating"
+          errorText="Price must be greater than 0" 
+          [value]="product.getPrice()" formControlName="price"></ion-input>
+      </ion-item>
+
+      <!-- Popcorn -->
+      <div *ngIf="product.getType() === 'popcorn'">
+        <ion-item>
+          <ion-input label="Size" labelPlacement="floating" 
+            errorText="Select size"
+            [value]="getSize()" formControlName="size"></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Glasses -->
+      <div *ngIf="product.getType() === 'glasses'">
+        <ion-item>
+          <ion-input label="Color" labelPlacement="floating" 
+            errorText="Select color"
+            [value]="getColor()" formControlName="color"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Size</ion-label>
+          <ion-select formControlName="size" [value]="getSize()" placeholder="Select size">
+            <ion-select-option value="small">Small</ion-select-option>
+            <ion-select-option value="medium">Medium</ion-select-option>
+            <ion-select-option value="large">Large</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+      </div>
+
+      <!-- Drink -->
+      <div *ngIf="product.getType() === 'drink'">
+        <ion-item>
+          <ion-input label="Volume (ml)" type="number" labelPlacement="floating"
+            errorText="Volume must be greater than 0"
+            [value]="getVolume()" formControlName="volume"></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Ticket -->
+      <div *ngIf="product.getType() === 'ticket'">
+        <ion-item>
+          <ion-input label="Row" labelPlacement="floating"
+            errorText="Row must be greater than 0" 
+            [value]="getRow()" formControlName="row"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Place" labelPlacement="floating"
+            errorText="Place must be greater than 0" 
+            [value]="getPlace()" formControlName="place"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Hall" labelPlacement="floating"
+            errorText="Hall must be greater than 0"
+            [value]="getHall()" formControlName="hall"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Date" labelPlacement="floating"
+            errorText="Date must bу real" 
+            [value]="getDate()" formControlName="date"></ion-input>
+        </ion-item>
+      </div>
+    </fieldset>
+  </ion-card-content>
+
+  <ion-button type="submit" [disabled]="productForm.invalid">Зберегти зміни</ion-button>
+</form>

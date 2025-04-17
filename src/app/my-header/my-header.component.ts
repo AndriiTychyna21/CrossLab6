@@ -6,7 +6,7 @@ import {IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton} from '@ionic
   templateUrl: './my-header.component.html',
   styleUrls: ['./my-header.component.scss'],
   standalone: true,
-  imports: [IonButtons,IonHeader, IonToolbar, IonTitle, IonMenuButton]
+  imports: [IonHeader, IonToolbar, IonTitle]
 })
 export class MyHeaderComponent  implements OnInit {
   @Input() name: string = 'Лабораторні роботи';

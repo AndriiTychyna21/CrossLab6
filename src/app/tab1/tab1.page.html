@@ -6,6 +6,11 @@
       <ion-label>
         <h2>{{ product.getName() }}</h2>
         <p *ngFor="let detail of product.getDetails()">{{ detail }}</p>
+        <ion-button *ngIf="!showEditForm" (click)="editProduct(product)">Редагувати</ion-button>
+        <app-edit-product *ngIf="showEditForm && selectedProduct === product" 
+        [product]="product" 
+        (productEdit)="onProductEdit($event)"></app-edit-product>
+        <ion-button color="danger" (click)="deleteProduct(product)">Видалити</ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

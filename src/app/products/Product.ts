@@ -23,7 +23,12 @@ export abstract class Product implements iProduct {
     }
 
     getPrice(): number{
-        return this.price
+        return this.price;
+    }
+
+    setID(ID: number): void{
+        if (ID < 0) throw new Error("Negative product ID");
+        this.id =ID;
     }
 
     abstract getDetails(): string[];

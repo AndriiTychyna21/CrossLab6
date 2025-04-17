@@ -46,6 +46,6 @@ export class Ticket extends Product {
     }
 
     override getType(): string {
-        return "Ticket";
+        return "ticket";
     }
 }

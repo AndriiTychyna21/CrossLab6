@@ -9,7 +9,7 @@ export class Drink extends Product {
         this.volume = volume;
     }
 
-    getVolume() {
+    getVolume(){
         return this.volume;
     }
 
@@ -23,6 +23,6 @@ export class Drink extends Product {
     }
 
     override getType(): string {
-        return "Drink";
+        return "drink";
     }
 }

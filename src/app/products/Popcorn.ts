@@ -24,6 +24,6 @@ export class Popcorn extends Product {
     }
 
     override getType(): string {
-        return "Popcorn";
+        return "popcorn";
     }
 }

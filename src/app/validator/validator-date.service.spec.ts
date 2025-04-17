@@ -14,38 +14,38 @@ describe('ValidatorDateService', () => {
   });
 
   describe('validate_date', () => {
-    it('should return true for valid date in dd.mm.yyyy format', () => {
-      expect(service.validate_date('20.04.2026')).toBe(true);
+    it('should return true for valid date in yyyy-mm-dd format', () => {
+      expect(service.validate_date('2026-04-20')).toBe(true);
     });
 
-    it('should return true for valid date in dd-mm-yyyy format', () => {
-      expect(service.validate_date('20-04-2026')).toBe(true);
+    it('should return false for valid date in yyyy.mm.dd format', () => {
+      expect(service.validate_date('2026.04.20')).toBe(false);
     });
 
-    it('should return true for valid date in dd/mm/yyyy format', () => {
-      expect(service.validate_date('20/04/2026')).toBe(true);
+    it('should return false for valid date in yyyy/mm/dd format', () => {
+      expect(service.validate_date('2026/04/20')).toBe(false);
     });
 
     it('should return false for invalid date (invalid day)', () => {
-      expect(service.validate_date('32.04.2026')).toBe(false);
+      expect(service.validate_date('2026-04-32')).toBe(false);
     });
 
     it('should return false for invalid date (invalid month)', () => {
-      expect(service.validate_date('20.13.2026')).toBe(false);
+      expect(service.validate_date('2026-13-20')).toBe(false);
     });
 
     it('should return false for invalid date (invalid year)', () => {
-      expect(service.validate_date('20.04.100')).toBe(false);
+      expect(service.validate_date('100-04-20')).toBe(false);
     });
 
     it('should return false for invalid date (wrong number of parts)', () => {
-      expect(service.validate_date('20.04')).toBe(false);
-      expect(service.validate_date('20.04.2026.12')).toBe(false);
+      expect(service.validate_date('2026-04')).toBe(false);
+      expect(service.validate_date('2026-04-12-20')).toBe(false);
     });
 
     it('should return false for invalid date (non-numeric parts)', () => {
       console.log("pupupu");
-      expect(service.validate_date('aa.bb.cccc')).toBe(false);
+      expect(service.validate_date('cccc-xx-yy')).toBe(false);
     });
 
     it('should return false for empty string', () => {

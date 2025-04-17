@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { IonCard, IonItem, IonButton } from '@ionic/angular/standalone';
+import { IonCard, IonItem, IonButton, IonSelect, IonInput, IonLabel, IonSelectOption } from '@ionic/angular/standalone';
 import { dateValidator } from '../validator/dateValidator';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  imports: [ReactiveFormsModule, CommonModule, IonCard, IonItem, IonButton],
+  imports: [ReactiveFormsModule, CommonModule, IonCard, IonItem, IonButton, IonSelect, IonInput, IonLabel, IonSelectOption],
 })
 export class AddProductComponent implements OnInit {
   productForm!: FormGroup;

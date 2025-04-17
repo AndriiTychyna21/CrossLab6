@@ -4,4 +4,5 @@ export interface iProduct {
     getPrice(): number;
     getDetails(): string[];
     getType(): string;
+    setID(ID: number): void;
 }
