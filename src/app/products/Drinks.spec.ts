@@ -24,7 +24,7 @@ describe('Drink testing', () => {
         expect(drink.getVolume()).toBe(500);
     });
     it('getType', () => {
-        expect(drink.getType()).toBe("Drink");
+        expect(drink.getType()).toBe("drink");
     });
     it('getDetails', () => {
         expect(drink.getDetails()).toEqual([`Id: 5`, `Name: Pepsi`, `Price: 30`, `Volume: 500ml`]);

@@ -30,7 +30,7 @@ describe('Ticket testing', () => {
         expect(ticket.getDate()).toBe("01-04-2025, 12:40");
     });
     it('getType', () => {
-        expect(ticket.getType()).toBe("Ticket");
+        expect(ticket.getType()).toBe("ticket");
     });
     it('getDetails', () => {
         expect(ticket.getDetails()).toEqual([`Id: 42`, `Name: Movie A - Standart ticket`, `Price: 200`, `Row: 5`, `Place: 4`, `Hall: 5`, `Date: 01-04-2025, 12:40`]);

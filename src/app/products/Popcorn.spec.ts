@@ -24,7 +24,7 @@ describe('Drink testing', () => {
         expect(popcorn.getSize()).toBe("large");
     });
     it('getType', () => {
-        expect(popcorn.getType()).toBe("Popcorn");
+        expect(popcorn.getType()).toBe("popcorn");
     });
     it('getDetails', () => {
         expect(popcorn.getDetails()).toEqual([`Id: 5`, `Name: Large Extra Cheese Popcorn`, `Price: 100`, `Size: large`]);

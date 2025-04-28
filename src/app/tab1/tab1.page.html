@@ -1,8 +1,12 @@
 <app-my-header name="Лабораторна робота №6"></app-my-header>
-
 <ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-button (click)="nextType()">Наступна категорія</ion-button>
+    <ion-label>Поточна категорія: </ion-label>
+    <ion-label>{{type}}</ion-label>
+  </ion-item>
   <ion-list>
-    <ion-item *ngFor="let product of dataService.products">
+    <ion-item *ngFor="let product of searchProducts">
       <ion-label>
         <h2>{{ product.getName() }}</h2>
         <p *ngFor="let detail of product.getDetails()">{{ detail }}</p>

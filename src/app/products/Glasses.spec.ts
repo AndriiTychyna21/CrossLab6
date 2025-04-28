@@ -36,7 +36,7 @@ describe('Glasses testing', () => {
         expect(glasses.getSize()).toBe("medium");
     });
     it('getType', () => {
-        expect(glasses.getType()).toBe("Glasses");
+        expect(glasses.getType()).toBe("glasses");
     });
     it('getDetails', () => {
         expect(glasses.getDetails()).toEqual([`Id: 5`, `Name: Medium Blue Glasses`, `Price: 50`, `Color: Blue`, `Size: medium`]);

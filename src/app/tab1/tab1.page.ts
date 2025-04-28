@@ -6,6 +6,12 @@ import { NgFor, NgIf } from '@angular/common'; // Import NgFor
 import { AddProductComponent } from '../add-product/add-product.component';
 import { EditProductComponent } from "../edit-product/edit-product.component";
 import { iProduct } from '../products/iProduct';
+import { ProductTypeSelectorService } from '../product-type-selector.service';
+import { Subscription } from 'rxjs';
+import { productType } from '../products/ProductFabric';
+import { filter } from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-tab1',
@@ -16,13 +22,34 @@ import { iProduct } from '../products/iProduct';
 })
 
 export class Tab1Page implements OnInit{
+  searchProducts: iProduct[] = []
   showAddForm = false;
   showEditForm = false;
   selectedProduct: iProduct | null = null;
-  constructor(public dataService: ReadDataService) {}
-  ngOnInit() {
-    this.dataService.load();  
+  count = 0;
+  type = productType[0];
+  private subscriptions: Subscription[] = [];
+  constructor(public dataService: ReadDataService, public productTypeService: ProductTypeSelectorService) {
   }
+
+  ngOnInit() { 
+    this.dataService.load();
+
+    const loadSub = this.dataService.loaded$.pipe(
+      filter(loaded => loaded)
+    ).subscribe(() => {
+      this.search(this.type);
+    });
+    this.subscriptions.push(loadSub);
+
+    const typeSub = this.productTypeService.type$.subscribe(() => {
+      let type = this.productTypeService.type$.value;
+      this.search(type);
+    });
+  
+    this.subscriptions.push(typeSub);
+    this.search(this.type);
+    }
   
   addFormShow(){
     this.showAddForm = true;
@@ -31,6 +58,7 @@ export class Tab1Page implements OnInit{
   addProduct($event: any){
     this.dataService.addProduct($event)
     this.showAddForm = false;
+    this.search(this.type);
   }
 
   editProduct(product: iProduct){
@@ -47,6 +75,7 @@ export class Tab1Page implements OnInit{
         this.showEditForm = false; 
       }
     }
+    this.search(this.type)
   }
 
   deleteProduct(removedProduct: iProduct) {
@@ -54,6 +83,22 @@ export class Tab1Page implements OnInit{
     if (index !== -1) {
       this.dataService.products.splice(index, 1);
     }
+    this.search(this.type);
   }
   
+  search(type: string){
+    this.searchProducts = this.dataService.products.filter((product) => {
+      return product.getType() == type;
+    })
+  }
+
+  nextType(){
+    this.count = this.count < productType.length - 1 ? this.count + 1 : 0;
+    this.productTypeService.setType(productType[this.count]);
+    this.type = productType[this.count];
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 }
